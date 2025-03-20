@@ -16,17 +16,30 @@
             justify-content: center;
             background-color: #f4f4f4;
         }
+
         iframe {
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100vh; /* Ajuste automático para cobrir toda a tela */
             border: none;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfcmdR4jIxdvfWUqF-P5uQLjhQsbnagL95oWh_Ad7wOIqlEyg/viewform?embedded=true" allowfullscreen></iframe>
-    
+
+    <!-- iFrame do Google Forms -->
+    <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfcmdR4jIxdvfWUqF-P5uQLjhQsbnagL95oWh_Ad7wOIqlEyg/viewform?embedded=true" 
+        allowfullscreen>
+    </iframe>
+
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js').then(() => {
-                console.log("Service Worker registrado com sucesso!");
+            navigator.serviceWorker.register('/sw.js')
+            .then(() => console.log("Service Worker registrado com sucesso!"))
+            .catch(error => console.log("Erro ao registrar Service Worker:", error));
+        }
+    </script>
+
+</body>
+</html>

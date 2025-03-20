@@ -17,23 +17,38 @@
             background-color: #f4f4f4;
         }
 
+        #formContainer {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
         iframe {
             width: 100%;
-            height: 100vh; /* Ajuste automático para cobrir toda a tela */
+            min-height: 1200px; /* Ajuste inicial para evitar cortes */
             border: none;
-            overflow: hidden;
         }
     </style>
 </head>
 <body>
 
-    <!-- iFrame do Google Forms -->
-    <iframe 
-        src="https://docs.google.com/forms/d/e/1FAIpQLSfcmdR4jIxdvfWUqF-P5uQLjhQsbnagL95oWh_Ad7wOIqlEyg/viewform?embedded=true" 
-        allowfullscreen>
-    </iframe>
+    <div id="formContainer">
+        <iframe 
+            id="formFrame"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfcmdR4jIxdvfWUqF-P5uQLjhQsbnagL95oWh_Ad7wOIqlEyg/viewform?embedded=true"
+            allowfullscreen>
+        </iframe>
+    </div>
 
     <script>
+        function adjustIframeHeight() {
+            var iframe = document.getElementById("formFrame");
+            iframe.style.height = window.innerHeight + "px";
+        }
+
+        window.onload = adjustIframeHeight;
+        window.onresize = adjustIframeHeight;
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
             .then(() => console.log("Service Worker registrado com sucesso!"))

@@ -10,21 +10,23 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
         }
         iframe {
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             border: none;
         }
     </style>
 </head>
 <body>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfcmdR4jIxdvfWUqF-P5uQLjhQsbnagL95oWh_Ad7wOIqlEyg/viewform?embedded=true"></iframe>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfcmdR4jIxdvfWUqF-P5uQLjhQsbnagL95oWh_Ad7wOIqlEyg/viewform?embedded=true" allowfullscreen></iframe>
+    
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js');
-        }
-    </script>
-</body>
-</html>
+            navigator.serviceWorker.register('/sw.js').then(() => {
+                console.log("Service Worker registrado com sucesso!");
